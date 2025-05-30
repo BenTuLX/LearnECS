@@ -6,10 +6,13 @@ using Unity.Transforms;
 namespace Learn.Lesson1.Scripts
 {
     [BurstCompile]
+    [RequireMatchingQueriesForUpdate]
     public partial struct SpawnerSystem : ISystem
     {
         public void OnCreate(ref SystemState state)
         {
+            state.RequireForUpdate<RandomCom>();
+            state.RequireForUpdate<Spawner>();
         }
 
         public void OnDestroy(ref SystemState state)
